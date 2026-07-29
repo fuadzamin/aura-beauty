@@ -1,4 +1,8 @@
-export default function Footer() {
+interface FooterProps {
+  onAdminClick?: () => void;
+}
+
+export default function Footer({ onAdminClick }: FooterProps) {
   return (
     <footer className="bg-emerald border-t border-gold/20 pt-16 pb-8 text-cream">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -20,20 +24,28 @@ export default function Footer() {
           <div>
             <h4 className="font-sans text-sm font-semibold tracking-wider uppercase mb-4 text-gold">Layanan Kami</h4>
             <ul className="space-y-3">
-              <li><a href="#" className="text-sm text-cream/70 hover:text-white transition-colors">Semua Perawatan</a></li>
-              <li><a href="#" className="text-sm text-cream/70 hover:text-white transition-colors">Toko Skincare Medis</a></li>
-              <li><a href="#" className="text-sm text-cream/70 hover:text-white transition-colors">Galeri Before & After</a></li>
-              <li><a href="#" className="text-sm text-cream/70 hover:text-white transition-colors">Konsultasi Dokter</a></li>
+              <li><a href="#treatments" className="text-sm text-cream/70 hover:text-white transition-colors">Semua Perawatan</a></li>
+              <li><a href="#shop" className="text-sm text-cream/70 hover:text-white transition-colors">Toko Skincare Medis</a></li>
+              <li><a href="#gallery" className="text-sm text-cream/70 hover:text-white transition-colors">Galeri Before &amp; After</a></li>
+              <li><a href="#about" className="text-sm text-cream/70 hover:text-white transition-colors">Konsultasi Dokter</a></li>
             </ul>
           </div>
 
           <div>
-            <h4 className="font-sans text-sm font-semibold tracking-wider uppercase mb-4 text-gold">Dukungan</h4>
+            <h4 className="font-sans text-sm font-semibold tracking-wider uppercase mb-4 text-gold">Akses Staff</h4>
             <ul className="space-y-3">
               <li><a href="#" className="text-sm text-cream/70 hover:text-white transition-colors">Hubungi Kami (WhatsApp)</a></li>
-              <li><a href="#" className="text-sm text-cream/70 hover:text-white transition-colors">Kebijakan Privasi</a></li>
-              <li><a href="#" className="text-sm text-cream/70 hover:text-white transition-colors">Syarat & Ketentuan</a></li>
               <li><a href="#" className="text-sm text-cream/70 hover:text-white transition-colors">FAQ Booking</a></li>
+              {onAdminClick && (
+                <li>
+                  <button 
+                    onClick={onAdminClick}
+                    className="text-sm text-gold font-semibold hover:underline flex items-center gap-1.5 transition-colors"
+                  >
+                    <span>Portal Dashboard Admin</span>
+                  </button>
+                </li>
+              )}
             </ul>
           </div>
 
